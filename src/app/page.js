@@ -137,6 +137,12 @@ export default function Home() {
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             disabled={isLoading}
+            InputProps={{
+              style: { color: 'white' }, // Set text color in the input
+            }}
+            InputLabelProps={{
+              style: { color: 'white' }, // Set label color in the input
+            }}
           />
           <Button 
             variant="contained" 
