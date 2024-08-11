@@ -18,7 +18,7 @@ export default function Home() {
   const sendMessage = async () => {
     if (!message.trim() || isLoading) return;
     setIsLoading(true)
-  
+
     setMessage('')
     setMessages((messages) => [
       ...messages,
@@ -62,6 +62,7 @@ export default function Home() {
         { role: 'assistant', content: "I'm sorry, but I encountered an error. Please try again later." },
       ])
     }
+
     setIsLoading(false)
   }
 
@@ -71,7 +72,6 @@ export default function Home() {
       sendMessage()
     }
   }
-
   const messagesEndRef = useRef(null)
 
   const scrollToBottom = () => {
@@ -81,7 +81,7 @@ export default function Home() {
   useEffect(() => {
     scrollToBottom()
   }, [messages])
-    
+
   return (
     <Box
       width="100vw"
@@ -90,7 +90,6 @@ export default function Home() {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      bgcolor="#f0f0f0" // Light gray background for the entire screen
     >
       <Stack
         direction={'column'}
@@ -117,11 +116,13 @@ export default function Home() {
             >
               <Box
                 bgcolor={
-                  message.role === 'assistant' ? '#1976d2' : '#0288d1' // Different shades of blue for assistant and user
+                  message.role === 'assistant'
+                    ? 'primary.main'
+                    : 'secondary.main'
                 }
                 color="white"
                 borderRadius={16}
-                p={2}
+                p={3}
               >
                 {message.content}
               </Box>
@@ -136,6 +137,12 @@ export default function Home() {
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             disabled={isLoading}
+            InputProps={{
+              style: { color: 'white' }, // Set text color in the input
+            }}
+            InputLabelProps={{
+              style: { color: 'white' }, // Set label color in the input
+            }}
           />
           <Button 
             variant="contained" 
