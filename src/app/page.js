@@ -24,6 +24,7 @@ export default function Home() {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
+      bgcolor="#f0f0f0" // Light gray background for the entire screen
     >
       <Stack
         direction={'column'}
