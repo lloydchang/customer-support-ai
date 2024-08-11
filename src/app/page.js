@@ -13,21 +13,7 @@ export default function Home() {
   const [message, setMessage] = useState('')
 
   const sendMessage = async () => {
-    if (!message.trim()) return; // Avoid sending empty messages
-
-    const newMessage = { role: 'user', content: message }
-
-    setMessages((prevMessages) => [...prevMessages, newMessage])
-    setMessage('') // Clear the input field
-
-    // Simulate an assistant response (optional)
-    setTimeout(() => {
-      const assistantResponse = {
-        role: 'assistant',
-        content: "I'm here to help! What do you need assistance with?",
-      }
-      setMessages((prevMessages) => [...prevMessages, assistantResponse])
-    }, 1000)
+    // We'll implement this function in the next section
   }
 
   return (
@@ -38,7 +24,6 @@ export default function Home() {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      bgcolor="#f0f0f0" // Light gray background for the entire screen
     >
       <Stack
         direction={'column'}
@@ -47,7 +32,6 @@ export default function Home() {
         border="1px solid black"
         p={2}
         spacing={3}
-        bgcolor="white" // White background for the chat box
       >
         <Stack
           direction={'column'}
@@ -66,11 +50,13 @@ export default function Home() {
             >
               <Box
                 bgcolor={
-                  message.role === 'assistant' ? '#1976d2' : '#0288d1' // Different shades of blue for assistant and user
+                  message.role === 'assistant'
+                    ? 'primary.main'
+                    : 'secondary.main'
                 }
                 color="white"
                 borderRadius={16}
-                p={2}
+                p={3}
               >
                 {message.content}
               </Box>
