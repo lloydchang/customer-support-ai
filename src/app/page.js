@@ -33,6 +33,7 @@ export default function Home() {
         border="1px solid black"
         p={2}
         spacing={3}
+        bgcolor="white" // White background for the chat box
       >
         <Stack
           direction={'column'}
